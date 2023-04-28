@@ -57,14 +57,14 @@ namespace Snake
         }
         private void AddFood()
         {
-            List<Position> Empty = new(EmptyPosition());
+            List<Position> empty = new(EmptyPosition());
 
-            if (Empty.Count == 0)
+            if (empty.Count == 0)
             {
                 return;
             }
 
-            Position pos = Empty[random.Next(Empty.Count)];
+            Position pos = empty[random.Next(empty.Count)];
             Grid[pos.Row, pos.Col] = GridValue.Food;
         }
 

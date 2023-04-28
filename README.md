@@ -10,3 +10,19 @@ The grid will be presented with 2 dimensional arrays.
 Empty space will be presented with value 0.
 Snake will be presented with value 1.
 Food will be presented with value 2.
+
+ENUM:
+an enum is a data type that allows you to define a set of named values. A public enum is an enum that is accessible from any code that can access the class or namespace in which it is defined.
+For example: 
+public enum DaysOfWeek
+{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+}
+
+DaysOfWeek myDay = DaysOfWeek.Monday;

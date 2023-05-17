@@ -44,7 +44,7 @@ public class MyClass
         MyReadOnlyField = value;
     }
 }
-In this example, we have a class MyClass with a readonly field MyReadOnlyField. This field can only be assigned a value once, either at initialization or in a constructor, and cannot be modified thereafter.
+In this example, we have a class MyClass with a readonly field MyReadOnlyField. This field can only be assigned a value once, either at initialization or in a constructor, and can't be modified thereafter.
 
 One use case for readonly is to create immutable objects, which are objects whose state cannot be changed once they are created. This can be useful for creating objects that are safe to pass around between different parts of your code without worrying about them being modified unexpectedly.
 

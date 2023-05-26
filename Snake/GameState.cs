@@ -47,9 +47,9 @@ namespace Snake
                                                                                                         
             for (int r = 0; r < Rows; r++)                                                              // Iterate through the grid and yield empty positions                 
             {
-                for (int c = 0; c < Columns; c++)
+                for (int c = 0; c < Columns; c++)                                                       
                 {
-                    if (Grid[r, c] == GridValue.Empty)
+                    if (Grid[r, c] == GridValue.Empty)                                                  // Check if the grid cell is empty
                     {
                         yield return new Position(r, c);                                                // Yield empty positions
                     }
@@ -57,73 +57,73 @@ namespace Snake
             }
         }
 
-        private void AddFood()
+        private void AddFood()                                                                          // Method to add food to the grid
         {
-            List<Position> empty = new(EmptyPosition());
+            List<Position> empty = new(EmptyPosition());                                                // Get all empty positions           
 
             if (empty.Count == 0)
             {
-                return; // No empty positions to add food
+                return;                                                                                 // No empty positions to add food
             }
 
-            Position pos = empty[random.Next(empty.Count)]; // Randomly select an empty position
-            Grid[pos.Row, pos.Col] = GridValue.Food; // Mark the grid cell as containing food
+            Position pos = empty[random.Next(empty.Count)];                                             // Randomly select an empty position
+            Grid[pos.Row, pos.Col] = GridValue.Food;                                                    // Mark the grid cell as containing food
         }
 
         public Position HeadPosition()
         {
-            return snakePositions.First.Value; // Get the position of the snake's head
+            return snakePositions.First.Value;                                                          // Get the position of the snake's head
         }
 
         public Position TailPosition()
         {
-            return snakePositions.Last.Value; // Get the position of the snake's tail
+            return snakePositions.Last.Value;                                                           // Get the position of the snake's tail
         }
 
         public IEnumerable<Position> SnakePositions()
         {
-            return snakePositions; // Return all snake positions
+            return snakePositions;                                                                      // Return all snake positions
         }
 
         private void AddHead(Position pos)
         {
-            snakePositions.AddFirst(pos); // Add a new position as the snake's head
-            Grid[pos.Row, pos.Col] = GridValue.Snake; // Mark the grid cell as occupied by the snake
+            snakePositions.AddFirst(pos);                                                               // Add a new position as the snake's head
+            Grid[pos.Row, pos.Col] = GridValue.Snake;                                                   // Mark the grid cell as occupied by the snake
         }
 
         private void RemoveTail()
         {
-            Position tail = snakePositions.Last.Value;
-            Grid[tail.Row, tail.Col] = GridValue.Empty; // Mark the grid cell as empty
-            snakePositions.RemoveLast(); // Remove the last position (snake's tail)
+            Position tail = snakePositions.Last.Value;                                                  // Get the snake's tail position
+            Grid[tail.Row, tail.Col] = GridValue.Empty;                                                 // Mark the grid cell as empty
+            snakePositions.RemoveLast();                                                                // Remove the last position (snake's tail)
         }
 
-        private Direction GetLastDirection()
+        private Direction GetLastDirection()                                                            // Method to get the last direction change
         {
             if (dirChanges.Count == 0)
             {
-                return Dir; // If no direction changes, return the current direction
+                return Dir;                                                                             // If no direction changes, return the current direction
             }
 
-            return dirChanges.Last.Value; // Return the last direction change
+            return dirChanges.Last.Value;                                                               // Return the last direction change
         }
 
-        private bool CanChangeDirection(Direction newDir)
+        private bool CanChangeDirection(Direction newDir)                                               // Method to check if the direction can be changed
         {
             if (dirChanges.Count == 2)
             {
-                return false; // Only allow at most two consecutive direction changes
+                return false;                                                                           // Only allow at most two consecutive direction changes
             }
 
             Direction lastDir = GetLastDirection();
-            return newDir != lastDir && newDir != lastDir.Opposite(); // Check if the new direction is valid
+            return newDir != lastDir && newDir != lastDir.Opposite();                                   // Check if the new direction is valid
         }
 
         public void ChangeDirection(Direction dir)
         {
             if (CanChangeDirection(dir))
             {
-                dirChanges.AddLast(dir); // Add the new direction change to the list
+                dirChanges.AddLast(dir);                                                                // Add the new direction change to the list
             }  
         }
 

@@ -7,18 +7,18 @@ using System.Runtime.CompilerServices;
 
 namespace Snake
 {
-    public class GameState
+    public class GameState                                                                              // Class to control the game state
     {
         public int Rows { get; }
         public int Columns { get; }
-        public GridValue[,] Grid { get; } // The grid representing the game state
-        public Direction Dir { get; private set; } // The current direction of the snake
-        public int Score { get; private set; } // The current score of the game
-        public bool GameOver { get; private set; } // Flag indicating if the game is over
+        public GridValue[,] Grid { get; }                                                               // The grid representing the game state
+        public Direction Dir { get; private set; }                                                      // The current direction of the snake
+        public int Score { get; private set; }                                                          // The current score of the game
+        public bool GameOver { get; private set; }                                                      // Flag indicating if the game is over
 
-        private readonly LinkedList<Direction> dirChanges = new(); // List to store direction changes
-        private readonly LinkedList<Position> snakePositions = new(); // List to store snake positions
-        private readonly Random random = new(); // Random number generator
+        private readonly LinkedList<Direction> dirChanges = new();                                          // List to store direction changes
+        private readonly LinkedList<Position> snakePositions = new();                                       // List to store snake positions
+        private readonly Random random = new();                                                             // Random number generator
 
         public GameState(int rows, int columns)
         {
@@ -27,8 +27,8 @@ namespace Snake
             Grid = new GridValue[rows, columns];
             Dir = Direction.Right;
 
-            AddSnake(); // Add the initial snake to the grid
-            AddFood(); // Add initial food to the grid
+            AddSnake();                                                                                 // Add the initial snake to the grid
+            AddFood();                                                                                  // Add initial food to the grid
         }
 
         private void AddSnake()

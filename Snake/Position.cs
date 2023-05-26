@@ -17,7 +17,7 @@ namespace Snake
             Col = column;                                                                       // Column is the column value of the position
         }
 
-        public Position Translate(Direction dir)
+        public Position Translate(Direction dir)                                                // This method returns the position of the snake by moving one step in the given direction
         {
             return new Position (Row + dir.RowOffset, Col + dir.ColumnOffset);
         }

@@ -22,7 +22,7 @@ namespace Snake
             return new Position (Row + dir.RowOffset, Col + dir.ColumnOffset);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object obj)                                             
         {
             return obj is Position position &&
                    Row == position.Row &&

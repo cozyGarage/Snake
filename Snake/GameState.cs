@@ -9,49 +9,49 @@ namespace Snake
 {
     public class GameState                                                                              // Class to control the game state
     {
-        public int Rows { get; }
-        public int Columns { get; }
+        public int Rows { get; }                                                                        // The number of rows in the grid                   
+        public int Columns { get; }                                                                     // The number of columns in the grid
         public GridValue[,] Grid { get; }                                                               // The grid representing the game state
         public Direction Dir { get; private set; }                                                      // The current direction of the snake
         public int Score { get; private set; }                                                          // The current score of the game
         public bool GameOver { get; private set; }                                                      // Flag indicating if the game is over
 
-        private readonly LinkedList<Direction> dirChanges = new();                                          // List to store direction changes
-        private readonly LinkedList<Position> snakePositions = new();                                       // List to store snake positions
-        private readonly Random random = new();                                                             // Random number generator
+        private readonly LinkedList<Direction> dirChanges = new();                                      // List to store direction changes
+        private readonly LinkedList<Position> snakePositions = new();                                   // List to store snake positions
+        private readonly Random random = new();                                                         // Random number generator
 
-        public GameState(int rows, int columns)
+        public GameState(int rows, int columns)                                                         // Constructor to define the game state
         {
-            Rows = rows;
-            Columns = columns;
-            Grid = new GridValue[rows, columns];
-            Dir = Direction.Right;
+            Rows = rows;                                                                                // Rows is the number of rows in the grid
+            Columns = columns;                                                                          // Columns is the number of columns in the grid
+            Grid = new GridValue[rows, columns];                                                        // Grid is the grid representing the game state
+            Dir = Direction.Right;                                                                      // Dir is the current direction of the snake
 
             AddSnake();                                                                                 // Add the initial snake to the grid
             AddFood();                                                                                  // Add initial food to the grid
         }
 
-        private void AddSnake()
+        private void AddSnake()                                                                         // Method to add the initial snake to the grid
         {
-            int r = Rows / 2;
+            int r = Rows / 2;                                                                           // The row value of the snake's head
 
-            for (int c = 1; c <= 3; c++)
+            for (int c = 1; c <= 3; c++)                                                                // The column values of the snake's head and body
             {
-                Grid[r, c] = GridValue.Snake; // Mark grid cells as occupied by the snake
-                snakePositions.AddFirst(new Position(r, c)); // Store snake positions
+                Grid[r, c] = GridValue.Snake;                                                           // Mark grid cells as occupied by the snake
+                snakePositions.AddFirst(new Position(r, c));                                            // Store snake positions
             }
         }
 
-        private IEnumerable<Position> EmptyPosition()
+        private IEnumerable<Position> EmptyPosition()                                                   // Method to return empty positions
         {
-            // Iterate through the grid and yield empty positions
-            for (int r = 0; r < Rows; r++)
+                                                                                                        
+            for (int r = 0; r < Rows; r++)                                                              // Iterate through the grid and yield empty positions                 
             {
                 for (int c = 0; c < Columns; c++)
                 {
                     if (Grid[r, c] == GridValue.Empty)
                     {
-                        yield return new Position(r, c); // Yield empty positions
+                        yield return new Position(r, c);                                                // Yield empty positions
                     }
                 }
             }

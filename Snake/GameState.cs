@@ -129,49 +129,49 @@ namespace Snake
 
         private bool OutsiteGrid(Position pos)
         {
-            return pos.Row < 0 || pos.Row >= Rows || pos.Col < 0 || pos.Col >= Columns; // Check if a position is outside the grid boundaries
+            return pos.Row < 0 || pos.Row >= Rows || pos.Col < 0 || pos.Col >= Columns;                 // Check if a position is outside the grid boundaries
         }
 
         private GridValue WillHit(Position newHeadPos)
         {
             if (OutsiteGrid(newHeadPos))
             {
-                return GridValue.Outside; // The new head position is outside the grid
+                return GridValue.Outside;                                                               // The new head position is outside the grid
             }
 
             if (newHeadPos == TailPosition())
             {
-                return GridValue.Empty; // The new head position is the snake's tail
+                return GridValue.Empty;                                                                 // The new head position is the snake's tail
             }
 
-            return Grid[newHeadPos.Row, newHeadPos.Col]; // Return the value at the new head position
+            return Grid[newHeadPos.Row, newHeadPos.Col];                                                // Return the value at the new head position
         }
 
         public void Move()
         {
             if (dirChanges.Count > 0)
             {
-                Dir = dirChanges.First.Value; // Update the current direction based on the first direction change
-                dirChanges.RemoveFirst(); // Remove the processed direction change
+                Dir = dirChanges.First.Value;                                                           // Update the current direction based on the first direction change
+                dirChanges.RemoveFirst();                                                               // Remove the processed direction change
             }
 
-            Position newHeadPos = HeadPosition().Translate(Dir); // Calculate the new head position based on the current direction
-            GridValue hit = WillHit(newHeadPos); // Check if the new head position will hit something
+            Position newHeadPos = HeadPosition().Translate(Dir);                                        // Calculate the new head position based on the current direction
+            GridValue hit = WillHit(newHeadPos);                                                        // Check if the new head position will hit something
 
             if (hit == GridValue.Outside || hit == GridValue.Snake)
             {
-                GameOver = true; // Game over if the new head position is outside the grid or hits the snake itself
+                GameOver = true;                                                                        // Game over if the new head position is outside the grid or hits the snake itself
             }
             else if (hit == GridValue.Empty)
             {
-                RemoveTail(); // Remove the tail position
-                AddHead(newHeadPos); // Add the new head position
+                RemoveTail();                                                                           // Remove the tail position
+                AddHead(newHeadPos);                                                                    // Add the new head position
             }
             else if (hit == GridValue.Food)
             {
-                AddHead(newHeadPos); // Add the new head position
-                Score++; // Increase the score
-                AddFood(); // Add new food to the grid
+                AddHead(newHeadPos);                                                                    // Add the new head position
+                Score++;                                                                                // Increase the score
+                AddFood();                                                                              // Add new food to the grid
             }
         }
     }

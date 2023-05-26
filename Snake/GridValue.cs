@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    public enum GridValue
+    public enum GridValue                                               // Public enum GridValue to define the values of the grid with name to east to understand
     {
         Empty,
         Snake,

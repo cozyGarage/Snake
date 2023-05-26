@@ -14,19 +14,20 @@
         Icon="Assets/icon.ico"
         PreviewKeyDown="Window_PreviewKeyDown"
         KeyDown="Window_KeyDown">
-    <Viewbox>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+    <Viewbox>                                                                                   <!-- The Viewbox scales its content to fit the available space -->
+        <Grid>                                                                                  <!-- The Grid is the main layout container -->
+            <Grid.RowDefinitions>                                                               <!-- The Grid has two rows, one for the score text and one for the game grid -->
+                <RowDefinition Height="auto"/>                                                  <!-- The first row is auto-sized, so it will be as big as the score text -->
+                <RowDefinition Height="*"/>                                                     <!-- The second row is star-sized, so it will take up all the remaining space -->
             </Grid.RowDefinitions>
-
-            <TextBlock x:Name="ScoreText"
+            <!-- TextBlock for displaying the score -->
+            <TextBlock x:Name="ScoreText"                                                       
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Text="SCORE 0"
                    FontSize="22"
-                   Margin="10"/>
+                   Margin="10"/> 
+            <!-- Border that holds the game grid -->                                                                     
             <Border x:Name="GridBorder"
                 Grid.Row="1"
                 BorderBrush="{StaticResource GridLineColor}"
@@ -35,6 +36,7 @@
                 VerticalAlignment="Center"
                 RenderOptions.EdgeMode="Aliased"
                 Margin="20, 0, 20, 20">
+                <!-- The game grid is a UniformGrid, which arranges its children in a grid with equal sized cells -->
                 <UniformGrid x:Name="GameGrid"
                          Width="400"
                          Height="400"
@@ -44,7 +46,7 @@
 
                 </UniformGrid>
             </Border>
-
+            <!-- Border that displaying the overlay text -->
             <Border x:Name="Overlay"
                     Grid.Row="1"
                     Background="{StaticResource OverlayColor}"

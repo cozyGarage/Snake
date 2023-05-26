@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    public class Position                                                                   // Class to define the position of the snake
+    public class Position                                                                       // Class to define the position of the snake
     {
         public int Row { get; }
         public int Col { get; }
 
-        public Position (int row, int column)                                                       // Constructor to define the position
+        public Position (int row, int column)                                                   // Constructor to define the position
         {
-            Row = row;                                                                      // Row is the row value of the position
+            Row = row;                                                                          // Row is the row value of the position
             Col = column;                                                                       // Column is the column value of the position
         }
 
